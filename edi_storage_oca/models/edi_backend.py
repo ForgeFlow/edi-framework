@@ -161,9 +161,9 @@ class EDIBackend(models.Model):
             bits.append(r"\." + exchange_type.exchange_file_ext)
         pattern = "".join(bits)
         # TODO: clean this up, .find_files is deprecated in fs_storage
-        full_paths = self.storage_id.find_files(pattern, full_input_dir_pending)
-        pending_path_len = len(full_input_dir_pending)
-        return [p[pending_path_len:].strip("/") for p in full_paths]
+        files = self.storage_id.find_files(pattern, full_input_dir_pending)
+        # pending_path_len = len(full_input_dir_pending)
+        return [p.strip("/") for p in files]
 
     def _storage_new_exchange_record_vals(self, file_name):
         return {"exchange_filename": file_name, "edi_exchange_state": "input_pending"}

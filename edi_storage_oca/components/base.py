@@ -67,18 +67,10 @@ class EDIStorageComponentMixin(AbstractComponent):
             # (the date will never match)
             # TODO: clean this up, .get is deprecated in fs_storage
             return self.storage.get(path.as_posix(), binary=binary)
-        except FileNotFoundError:
+        except Exception:
             _logger.info(
                 "Ignored FileNotFoundError when trying "
                 "to get file %s into path %s for state %s",
-                filename,
-                path,
-                state,
-            )
-            return None
-        except OSError:
-            _logger.info(
-                "Ignored OSError when trying to get file %s into path %s for state %s",
                 filename,
                 path,
                 state,

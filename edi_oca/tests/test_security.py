@@ -5,7 +5,7 @@
 from odoo_test_helper import FakeModelLoader
 
 from odoo.exceptions import AccessError
-from odoo.tests.common import tagged
+from odoo.tests import tagged
 from odoo.tools import mute_logger
 
 from .common import EDIBackendCommonTestCase

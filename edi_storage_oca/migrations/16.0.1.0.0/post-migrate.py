@@ -6,8 +6,6 @@ import logging
 
 from openupgradelib import openupgrade
 
-from odoo.addons.http_routing.models.ir_http import slugify
-
 _logger = logging.getLogger(__name__)
 
 
@@ -85,7 +83,7 @@ def migrate(env, version):
     fs_storage = env["fs.storage"]
 
     for record in storage_backend_records:
-        code = slugify(record.get("name")).replace("-", "_")
+        code = env["ir.http"]._slugify(record.get("name")).replace("-", "_")
         if fs_storage.search([("code", "=", code)]):
             code = "%s_%d" % (code, record.id)
 

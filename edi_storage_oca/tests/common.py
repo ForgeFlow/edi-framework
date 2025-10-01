@@ -1,4 +1,4 @@
-# Copyright 2020 ACSONE SA/NV (<http://acsone.eu>)
+# Copyedi_storage_ocariedi_storage_ocaght 2020 ACSONE SA/NV (<http://acsone.eu>)
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 import base64
 import functools

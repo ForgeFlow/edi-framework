@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # # Copyright 2020 ACSONE
 # Copyright 2022 Camptocamp
 # Copyright 2025 Dixmit
@@ -5,6 +6,15 @@
 # @author: Simone Orsi <simahawk@gmail.com>
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
+=======
+# Copyright 2025 Dixmit
+# @author Enric Tobella
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+
+# Copyright 2025 Dixmit
+# License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).
+
+>>>>>>> 691a1f8 ([MIG] edi_storage_oca: Adapt to changed of edi_core_oca)
 import logging
 from pathlib import PurePath
 

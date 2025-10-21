@@ -3,6 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import logging
+import json
 
 from openupgradelib import openupgrade
 
@@ -12,34 +13,39 @@ _logger = logging.getLogger(__name__)
 def _get_storage_vals(code, record):
     protocol = "odoofs"
     options = record
-    if record["backend_type"] == "filesystem":
+    #TODO: Remove after testing is completed
+    name = record["name"]
+    _logger.info(f"Moving code {code}: {name}, {protocol}, {options}, {record}")
+    server_env_defaults = json.loads(record.get("server_env_defaults", {}))
+    backend_type = json.loads(record.get("server_env_defaults", {})).get("backend_type_env_default", False) or options.get("backend_type", False)
+    if backend_type == "filesystem":
         protocol = "file"
         options = {}
 
-    if record["backend_type"] == "ftp":
+    if backend_type == "ftp":
         protocol = "ftp"
         options = {
-            "host": record["ftp_server"],
-            "port": record["ftp_server"],
-            "username": record["ftp_login"],
-            "password": record["ftp_password"],
+            "host": server_env_defaults["ftp_server_env_default"],
+            "port": server_env_defaults["ftp_port_env_default"],
+            "username": server_env_defaults["ftp_login_env_default"],
+            "password": server_env_defaults["ftp_password_env_default"],
         }
-    if record["backend_type"] == "sftp":
+    if backend_type == "sftp":
         protocol = "sftp"
         options = {
-            "host": record["sftp_host"],
+            "host": server_env_defaults["sftp_host"],
             "ssh_kwargs": {
-                "port": record["sftp_port"],
+                "port": server_env_defaults["sftp_port"],
             },
         }
-        if record["sftp_auth_method"] == "pwd":
+        if server_env_defaults["sftp_auth_method"] == "pwd":
             options["ssh_kwargs"].update(
                 {
-                    "username": record["sftp_user"],
-                    "password": record["sftp_password"],
+                    "username": server_env_defaults["sftp_user"],
+                    "password": server_env_defaults["sftp_password"],
                 }
             )
-        elif record["sftp_auth_method"] == "ssh_key":
+        elif server_env_defaults["sftp_auth_method"] == "ssh_key":
             _logger.warning(
                 "SSH Key requires a PrivateKey file, but we are "
                 "providing a string. Please check the migration."
@@ -49,19 +55,21 @@ def _get_storage_vals(code, record):
                     "pkey": record["sftp_private_key"],
                 }
             )
-    if record["backend_type"] == "s3":
+    if backend_type == "s3":
         protocol = "s3"
         options = {
-            "endpoint_url": record["aws_host"],
-            "key": record["aws_access_key_id"],
-            "secret": record["aws_secret_access_key"],
+            "endpoint_url": server_env_defaults["aws_host"],
+            "key": server_env_defaults["aws_access_key_id"],
+            "secret": server_env_defaults["aws_secret_access_key"],
         }
+    #TODO: Remove after testing is completed
+    name = record["name"]
+    _logger.info(f"Moving code {code}: {name}, {protocol}, {options}, {record}")
     return {
         "name": record["name"],
         "code": code,
         "protocol": protocol,
-        "options": options,
-        "directory_path": record["directory_path"],
+        "options": json.dumps(options),
     }
 
 
@@ -72,7 +80,6 @@ def migrate(env, version):
     env.cr.execute(
         """
     SELECT * FROM storage_backend
-    WHERE id in (SELECT storage_id FROM edi_backend WHERE storage_id IS NOT NULL)
     """
     )
     storage_field = openupgrade.get_legacy_name("storage_id")

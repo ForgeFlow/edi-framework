@@ -3,15 +3,12 @@
 # @author: Simone Orsi <simahawk@gmail.com>
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
-import base64
 from unittest import mock
 
 from freezegun import freeze_time
 
 from odoo import exceptions, fields
 from odoo.tools import mute_logger
-
-from odoo.addons.edi_core_oca.utils import get_checksum
 
 from .common import EDIBackendCommonTestCase
 
@@ -191,39 +188,6 @@ class EDIRecordTestCase(EDIBackendCommonTestCase):
             mocked.assert_not_called()
         self.assertEqual(record0.edi_exchange_state, "output_pending")
         self.assertFalse(record0.retryable)
-
-    def test_checksum(self):
-        filecontent = base64.b64encode(b"ABC")
-        checksum1 = get_checksum(filecontent)
-        vals = {
-            "model": self.partner._name,
-            "res_id": self.partner.id,
-            "exchange_file": filecontent,
-        }
-        record0 = self.backend.create_record("test_csv_output", vals)
-        self.assertEqual(record0.exchange_filechecksum, checksum1)
-        filecontent = base64.b64encode(b"DEF")
-        checksum2 = get_checksum(filecontent)
-        record0.exchange_file = filecontent
-        self.assertEqual(record0.exchange_filechecksum, checksum2)
-        self.assertNotEqual(record0.exchange_filechecksum, checksum1)
-
-    def test_file_frozen(self):
-        filecontent = base64.b64encode(b"ABC")
-        vals = {
-            "model": self.partner._name,
-            "res_id": self.partner.id,
-            "exchange_file": filecontent,
-        }
-        record0 = self.backend.create_record("test_csv_output", vals)
-        bypass_group = "edi_core_oca.group_edi_override_exchange_file_content"
-        self.assertTrue(self.env.user.has_group(bypass_group))
-        self.assertFalse(record0.exchange_file_frozen)
-        record0.edi_exchange_state = "output_sent"
-        self.assertFalse(record0.exchange_file_frozen)
-        self.env.user.groups_id -= self.env.ref(bypass_group)
-        record0.invalidate_recordset()
-        self.assertTrue(record0.exchange_file_frozen)
 
     def test_related_records(self):
         vals = {

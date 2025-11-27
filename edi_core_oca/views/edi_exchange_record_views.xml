@@ -133,8 +133,6 @@
                                 invisible="exchange_file"
                                 readonly="exchange_file_frozen"
                             />
-                            <field name="exchange_file" filename="exchange_filename" />
-                            <field name="exchange_filename" invisible="exchange_file" />
                         </group>
                         <group name="ack" string="ACK" invisible="not ack_expected">
                             <field name="ack_expected" />

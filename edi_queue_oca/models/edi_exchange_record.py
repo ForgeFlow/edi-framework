@@ -6,8 +6,6 @@ from ast import literal_eval
 
 from odoo import fields, models
 
-from ..utils import exchange_record_job_identity_exact
-
 
 class EdiExchangeRecord(models.Model):
     _inherit = "edi.exchange.record"
@@ -38,8 +36,6 @@ class EdiExchangeRecord(models.Model):
         priority = exchange_type.job_priority
         if priority:
             params["priority"] = priority
-        # Avoid generating the same job for the same record if existing
-        params["identity_key"] = exchange_record_job_identity_exact
         return params
 
     def with_delay(self, **kw):

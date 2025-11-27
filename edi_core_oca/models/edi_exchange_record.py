@@ -10,8 +10,6 @@ from collections import defaultdict
 from odoo import Command, api, exceptions, fields, models
 from odoo.exceptions import AccessError
 
-from ..utils import get_checksum
-
 _logger = logging.getLogger(__name__)
 
 
@@ -63,12 +61,6 @@ class EDIExchangeRecord(models.Model):
     exchange_file = fields.Binary(attachment=True, copy=False)
     exchange_filename = fields.Char(
         compute="_compute_exchange_filename", readonly=False, store=True
-    )
-    exchange_filechecksum = fields.Char(
-        compute="_compute_exchange_filechecksum",
-        store=True,
-        tracking=True,
-        readonly=True,
     )
     exchanged_on = fields.Datetime(
         help="Sent or received on this date.",
@@ -165,14 +157,6 @@ class EDIExchangeRecord(models.Model):
                 continue
             if not rec.exchange_filename:
                 rec.exchange_filename = rec.type_id._make_exchange_filename(rec)
-
-    @api.depends("exchange_file")
-    def _compute_exchange_filechecksum(self):
-        for rec in self:
-            content = rec.exchange_file or ""
-            if not isinstance(content, bytes):
-                content = content.encode()
-            rec.exchange_filechecksum = get_checksum(content)
 
     @api.depends("edi_exchange_state")
     def _compute_exchanged_on(self):

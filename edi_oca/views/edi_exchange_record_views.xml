@@ -14,18 +14,8 @@
                     optional="hide"
                 />
                 <field name="related_name" optional="hide" />
-                <field
-                    name="res_id"
-                    groups="base.group_no_one"
-                    optional="hide"
-                    readonly="1"
-                />
-                <field
-                    name="model"
-                    groups="base.group_no_one"
-                    optional="hide"
-                    readonly="1"
-                />
+                <field name="res_id" groups="base.group_no_one" optional="hide" />
+                <field name="model" groups="base.group_no_one" optional="hide" />
                 <field name="exchanged_on" />
                 <field name="ack_received_on" />
                 <field
@@ -34,7 +24,6 @@
                     decoration-danger="edi_exchange_state in ['validate_error', 'output_error_on_send', 'output_sent_and_error', 'input_receive_error', 'input_processed_error']"
                     widget="badge"
                 />
-                <field name="exchange_error" optional="show" />
             </tree>
         </field>
     </record>
@@ -105,23 +94,6 @@
                     />
                 </header>
                 <sheet>
-                    <div class="oe_button_box" name="button_box">
-                        <button
-                            type="object"
-                            class="oe_stat_button"
-                            icon="fa-calendar"
-                            name="action_view_related_queue_jobs"
-                            attrs="{'invisible': [('related_queue_jobs_count', '=', 0)]}"
-                            groups="base_edi.group_edi_user"
-                        >
-                            <field
-                                string="Jobs"
-                                name="related_queue_jobs_count"
-                                widget="statinfo"
-                                readonly="1"
-                            />
-                        </button>
-                    </div>
                     <div class="oe_title">
                         <label for="identifier" class="oe_edit_only" />
                         <h1>
@@ -168,8 +140,8 @@
                             groups="base.group_no_one"
                             attrs="{'invisible': [('res_id', '=', 0)]}"
                         >
-                          <field name="res_id" readonly="1" />
-                          <field name="model" readonly="1" />
+                          <field name="res_id" />
+                          <field name="model" />
                           <span
                                 class="text-warning"
                                 attrs="{'invisible': [('related_record_exists', '=', True)]}"
@@ -183,10 +155,9 @@
                         <page
                             name="error"
                             string="Error"
-                            attrs="{'invisible': [('exchange_error_traceback', '=', False)]}"
+                            attrs="{'invisible': [('exchange_error', '=', False)]}"
                         >
                             <field name="exchange_error" />
-                            <field name="exchange_error_traceback" />
                         </page>
                         <!-- FIXME: this `invisible` domain does not work -->
                         <page
@@ -204,24 +175,6 @@
                                 <field name="exchanged_on" />
                                 <field name="ack_received_on" />
                                 <field name="edi_exchange_state" />
-                              </tree>
-                            </field>
-                        </page>
-                        <page
-                            name="related_records"
-                            string="Related Records"
-                            attrs="{'invisible': [('related_record_ids', '=', False)]}"
-                        >
-                            <field name="related_record_ids" nolabel="1" colspan="4">
-                              <tree create="false" delete="false" editable="bottom">
-                                <field name="model" />
-                                <field name="res_id" />
-                                <button
-                                        name="action_open_related_record"
-                                        type="object"
-                                        icon="fa-arrow-right"
-                                        string="Open Record"
-                                    />
                               </tree>
                             </field>
                         </page>

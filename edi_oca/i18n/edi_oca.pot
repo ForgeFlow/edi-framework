@@ -53,24 +53,6 @@ msgid ""
 msgstr ""
 
 #. module: edi_oca
-#: model:ir.model,name:edi_oca.model_edi_configuration_trigger
-msgid ""
-"\n"
-"        Describe what triggers a specific action for a configuration.\n"
-"    "
-msgstr ""
-
-#. module: edi_oca
-#: model:ir.model,name:edi_oca.model_edi_configuration
-msgid ""
-"\n"
-"        This model is used to configure EDI (Electronic Data Interchange) flows.\n"
-"        It allows users to create their own configurations, which can be tailored\n"
-"        to meet the specific needs of their business processes.\n"
-"    "
-msgstr ""
-
-#. module: edi_oca
 #: model:ir.model.fields,help:edi_oca.field_edi_backend__output_sent_processed_auto
 msgid ""
 "\n"
@@ -121,11 +103,6 @@ msgstr ""
 #. module: edi_oca
 #: model_terms:ir.ui.view,arch_db:edi_oca.message_edi_exchange_link
 msgid "<strong>Type:</strong>"
-msgstr ""
-
-#. module: edi_oca
-#: model:ir.model.constraint,message:edi_oca.constraint_edi_exchange_related_record_related_record_unique
-msgid "A record can only be related once to a specific exchange record."
 msgstr ""
 
 #. module: edi_oca
@@ -203,12 +180,9 @@ msgstr ""
 
 #. module: edi_oca
 #: model:ir.model.fields,field_description:edi_oca.field_edi_backend__active
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration__active
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration_trigger__active
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_type__active
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_type_rule__active
 #: model_terms:ir.ui.view,arch_db:edi_oca.edi_backend_view_search
-#: model_terms:ir.ui.view,arch_db:edi_oca.edi_configuration_view_search
 #: model_terms:ir.ui.view,arch_db:edi_oca.edi_exchange_type_rule_view_search
 #: model_terms:ir.ui.view,arch_db:edi_oca.edi_exchange_type_view_search
 msgid "Active"
@@ -257,8 +231,6 @@ msgstr ""
 #. module: edi_oca
 #: model_terms:ir.ui.view,arch_db:edi_oca.edi_backend_view_form
 #: model_terms:ir.ui.view,arch_db:edi_oca.edi_backend_view_search
-#: model_terms:ir.ui.view,arch_db:edi_oca.edi_configuration_trigger_view_form
-#: model_terms:ir.ui.view,arch_db:edi_oca.edi_configuration_view_form
 #: model_terms:ir.ui.view,arch_db:edi_oca.edi_exchange_type_rule_view_form
 #: model_terms:ir.ui.view,arch_db:edi_oca.edi_exchange_type_rule_view_search
 #: model_terms:ir.ui.view,arch_db:edi_oca.edi_exchange_type_view_form
@@ -279,7 +251,6 @@ msgid ""
 msgstr ""
 
 #. module: edi_oca
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration__backend_id
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record__backend_id
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record_create_wiz__backend_id
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_type__backend_id
@@ -295,7 +266,6 @@ msgstr ""
 
 #. module: edi_oca
 #. odoo-python
-#: code:addons/edi_oca/models/edi_configuration.py:0
 #: code:addons/edi_oca/models/edi_exchange_record.py:0
 #, python-format
 msgid "Backend must match with exchange type's backend!"
@@ -321,7 +291,6 @@ msgstr ""
 
 #. module: edi_oca
 #. odoo-python
-#: code:addons/edi_oca/models/edi_configuration.py:0
 #: code:addons/edi_oca/models/edi_exchange_record.py:0
 #, python-format
 msgid "Backend type must match with exchange type's backend type!"
@@ -345,15 +314,8 @@ msgstr ""
 #. module: edi_oca
 #: model:ir.model.fields,field_description:edi_oca.field_edi_backend__backend_type_code
 #: model:ir.model.fields,field_description:edi_oca.field_edi_backend_type__code
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration__trigger
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration_trigger__code
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_type__code
 msgid "Code"
-msgstr ""
-
-#. module: edi_oca
-#: model:ir.model.constraint,message:edi_oca.constraint_edi_configuration_trigger_code_uniq
-msgid "Code must be unique"
 msgstr ""
 
 #. module: edi_oca
@@ -365,11 +327,6 @@ msgstr ""
 #. module: edi_oca
 #: model:ir.ui.menu,name:edi_oca.menu_edi_config
 msgid "Config"
-msgstr ""
-
-#. module: edi_oca
-#: model:ir.ui.menu,name:edi_oca.menu_edi_configuration
-msgid "Configurations"
 msgstr ""
 
 #. module: edi_oca
@@ -385,11 +342,8 @@ msgstr ""
 #. module: edi_oca
 #: model:ir.model.fields,field_description:edi_oca.field_edi_backend__create_uid
 #: model:ir.model.fields,field_description:edi_oca.field_edi_backend_type__create_uid
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration__create_uid
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration_trigger__create_uid
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record__create_uid
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record_create_wiz__create_uid
-#: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_related_record__create_uid
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_type__create_uid
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_type_rule__create_uid
 msgid "Created by"
@@ -403,11 +357,8 @@ msgstr ""
 #. module: edi_oca
 #: model:ir.model.fields,field_description:edi_oca.field_edi_backend__create_date
 #: model:ir.model.fields,field_description:edi_oca.field_edi_backend_type__create_date
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration__create_date
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration_trigger__create_date
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record__create_date
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record_create_wiz__create_date
-#: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_related_record__create_date
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_type__create_date
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_type_rule__create_date
 msgid "Created on"
@@ -429,18 +380,6 @@ msgid "Decoding Error Handler"
 msgstr ""
 
 #. module: edi_oca
-#: model:ir.model.fields,help:edi_oca.field_edi_configuration__description
-#: model:ir.model.fields,help:edi_oca.field_edi_configuration_trigger__description
-msgid "Describe what the conf is for"
-msgstr ""
-
-#. module: edi_oca
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration__description
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration_trigger__description
-msgid "Description"
-msgstr ""
-
-#. module: edi_oca
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record__direction
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_type__direction
 msgid "Direction"
@@ -454,11 +393,8 @@ msgstr ""
 #. module: edi_oca
 #: model:ir.model.fields,field_description:edi_oca.field_edi_backend__display_name
 #: model:ir.model.fields,field_description:edi_oca.field_edi_backend_type__display_name
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration__display_name
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration_trigger__display_name
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record__display_name
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record_create_wiz__display_name
-#: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_related_record__display_name
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_type__display_name
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_type_rule__display_name
 msgid "Display Name"
@@ -497,22 +433,6 @@ msgstr ""
 #. module: edi_oca
 #: model:ir.model.fields,field_description:edi_oca.field_edi_backend__backend_type_id
 msgid "EDI Backend type"
-msgstr ""
-
-#. module: edi_oca
-#: model_terms:ir.ui.view,arch_db:edi_oca.edi_configuration_view_form
-msgid "EDI Config Before Do"
-msgstr ""
-
-#. module: edi_oca
-#: model_terms:ir.ui.view,arch_db:edi_oca.edi_configuration_view_form
-msgid "EDI Config Do"
-msgstr ""
-
-#. module: edi_oca
-#: model:ir.actions.act_window,name:edi_oca.act_open_edi_configuration_view
-#: model_terms:ir.ui.view,arch_db:edi_oca.edi_configuration_view_form
-msgid "EDI Configuration"
 msgstr ""
 
 #. module: edi_oca
@@ -555,11 +475,6 @@ msgid "EDI exchange Record"
 msgstr ""
 
 #. module: edi_oca
-#: model:ir.model,name:edi_oca.model_edi_exchange_related_record
-msgid "EDI exchange Related Record"
-msgstr ""
-
-#. module: edi_oca
 #: model:ir.actions.server,name:edi_oca.cron_edi_backend_check_input_exchange_ir_actions_server
 #: model:ir.cron,cron_name:edi_oca.cron_edi_backend_check_input_exchange
 msgid "EDI exchange check input sync"
@@ -589,11 +504,6 @@ msgstr ""
 #. module: edi_oca
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_consumer_mixin__edi_config
 msgid "Edi Config"
-msgstr ""
-
-#. module: edi_oca
-#: model_terms:ir.ui.view,arch_db:edi_oca.edi_configuration_view_search
-msgid "Edi Configuration"
 msgstr ""
 
 #. module: edi_oca
@@ -697,7 +607,6 @@ msgstr ""
 
 #. module: edi_oca
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_consumer_mixin__exchange_record_ids
-#: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_related_record__exchange_record_id
 msgid "Exchange Record"
 msgstr ""
 
@@ -707,12 +616,6 @@ msgid "Exchange Record Count"
 msgstr ""
 
 #. module: edi_oca
-#: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_consumer_mixin__exchange_related_record_ids
-msgid "Exchange Related Record"
-msgstr ""
-
-#. module: edi_oca
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration__type_id
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record_create_wiz__exchange_type_id
 msgid "Exchange Type"
 msgstr ""
@@ -732,11 +635,6 @@ msgstr ""
 #. module: edi_oca
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record__exchange_error
 msgid "Exchange error"
-msgstr ""
-
-#. module: edi_oca
-#: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record__exchange_error_traceback
-msgid "Exchange error traceback"
 msgstr ""
 
 #. module: edi_oca
@@ -970,11 +868,8 @@ msgstr ""
 #. module: edi_oca
 #: model:ir.model.fields,field_description:edi_oca.field_edi_backend__id
 #: model:ir.model.fields,field_description:edi_oca.field_edi_backend_type__id
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration__id
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration_trigger__id
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record__id
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record_create_wiz__id
-#: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_related_record__id
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_type__id
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_type_rule__id
 msgid "ID"
@@ -1016,11 +911,6 @@ msgid "Ignore"
 msgstr ""
 
 #. module: edi_oca
-#: model_terms:ir.ui.view,arch_db:edi_oca.edi_configuration_view_search
-msgid "Inactive"
-msgstr ""
-
-#. module: edi_oca
 #: model:ir.ui.menu,name:edi_oca.menu_edi_exchange_record_inbound
 #: model_terms:ir.ui.view,arch_db:edi_oca.edi_exchange_record_view_search
 #: model_terms:ir.ui.view,arch_db:edi_oca.edi_exchange_type_view_search
@@ -1048,16 +938,6 @@ msgid "Job Channel"
 msgstr ""
 
 #. module: edi_oca
-#: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_type__job_priority
-msgid "Job Priority"
-msgstr ""
-
-#. module: edi_oca
-#: model_terms:ir.ui.view,arch_db:edi_oca.edi_exchange_record_view_form
-msgid "Jobs"
-msgstr ""
-
-#. module: edi_oca
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_type_rule__kind
 #: model_terms:ir.ui.view,arch_db:edi_oca.edi_exchange_type_rule_view_search
 msgid "Kind"
@@ -1066,11 +946,8 @@ msgstr ""
 #. module: edi_oca
 #: model:ir.model.fields,field_description:edi_oca.field_edi_backend____last_update
 #: model:ir.model.fields,field_description:edi_oca.field_edi_backend_type____last_update
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration____last_update
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration_trigger____last_update
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record____last_update
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record_create_wiz____last_update
-#: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_related_record____last_update
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_type____last_update
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_type_rule____last_update
 msgid "Last Modified on"
@@ -1079,11 +956,8 @@ msgstr ""
 #. module: edi_oca
 #: model:ir.model.fields,field_description:edi_oca.field_edi_backend__write_uid
 #: model:ir.model.fields,field_description:edi_oca.field_edi_backend_type__write_uid
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration__write_uid
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration_trigger__write_uid
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record__write_uid
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record_create_wiz__write_uid
-#: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_related_record__write_uid
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_type__write_uid
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_type_rule__write_uid
 msgid "Last Updated by"
@@ -1092,11 +966,8 @@ msgstr ""
 #. module: edi_oca
 #: model:ir.model.fields,field_description:edi_oca.field_edi_backend__write_date
 #: model:ir.model.fields,field_description:edi_oca.field_edi_backend_type__write_date
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration__write_date
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration_trigger__write_date
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record__write_date
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record_create_wiz__write_date
-#: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_related_record__write_date
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_type__write_date
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_type_rule__write_date
 msgid "Last Updated on"
@@ -1118,11 +989,8 @@ msgid "Messages"
 msgstr ""
 
 #. module: edi_oca
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration__model_id
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration_trigger__model_id
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record__model
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record_create_wiz__model
-#: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_related_record__model
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_type_rule__model_id
 #: model_terms:ir.ui.view,arch_db:edi_oca.edi_exchange_record_view_search
 #: model_terms:ir.ui.view,arch_db:edi_oca.edi_exchange_type_rule_view_search
@@ -1140,21 +1008,8 @@ msgid "Model rules"
 msgstr ""
 
 #. module: edi_oca
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration__model_name
-msgid "Model tech name"
-msgstr ""
-
-#. module: edi_oca
-#: model:ir.model.fields,help:edi_oca.field_edi_configuration__model_id
-#: model:ir.model.fields,help:edi_oca.field_edi_configuration_trigger__model_id
-msgid "Model the conf applies to. Leave blank to apply for all models"
-msgstr ""
-
-#. module: edi_oca
 #: model:ir.model.fields,field_description:edi_oca.field_edi_backend__name
 #: model:ir.model.fields,field_description:edi_oca.field_edi_backend_type__name
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration__name
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration_trigger__name
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_type__name
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_type_rule__name
 msgid "Name"
@@ -1183,11 +1038,6 @@ msgstr ""
 #. module: edi_oca
 #: model:ir.model.fields,help:edi_oca.field_edi_exchange_record__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr ""
-
-#. module: edi_oca
-#: model_terms:ir.ui.view,arch_db:edi_oca.edi_exchange_record_view_form
-msgid "Open Record"
 msgstr ""
 
 #. module: edi_oca
@@ -1220,14 +1070,6 @@ msgstr ""
 #. module: edi_oca
 #: model_terms:ir.ui.view,arch_db:edi_oca.edi_exchange_record_view_search
 msgid "Parent exchange"
-msgstr ""
-
-#. module: edi_oca
-#. odoo-python
-#: code:addons/edi_oca/models/edi_configuration.py:0
-#: model_terms:ir.ui.view,arch_db:edi_oca.edi_configuration_view_form
-#, python-format
-msgid "Partners"
 msgstr ""
 
 #. module: edi_oca
@@ -1269,7 +1111,6 @@ msgstr ""
 
 #. module: edi_oca
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record__res_id
-#: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_related_record__res_id
 msgid "Record"
 msgstr ""
 
@@ -1313,22 +1154,11 @@ msgid "Related Name"
 msgstr ""
 
 #. module: edi_oca
-#: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record__related_queue_jobs_count
-msgid "Related Queue Jobs Count"
-msgstr ""
-
-#. module: edi_oca
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record__related_record_exists
 msgid "Related Record Exists"
 msgstr ""
 
 #. module: edi_oca
-#: model_terms:ir.ui.view,arch_db:edi_oca.edi_exchange_record_view_form
-msgid "Related Records"
-msgstr ""
-
-#. module: edi_oca
-#: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record__related_exchange_ids
 #: model_terms:ir.ui.view,arch_db:edi_oca.edi_exchange_record_view_form
 msgid "Related exchanges"
 msgstr ""
@@ -1339,7 +1169,7 @@ msgid "Related record"
 msgstr ""
 
 #. module: edi_oca
-#: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record__related_record_ids
+#: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_record__related_exchange_ids
 msgid "Related records"
 msgstr ""
 
@@ -1429,27 +1259,12 @@ msgid "Snippet"
 msgstr ""
 
 #. module: edi_oca
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration__snippet_before_do
-msgid "Snippet Before Do"
-msgstr ""
-
-#. module: edi_oca
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration__snippet_do
-msgid "Snippet Do"
-msgstr ""
-
-#. module: edi_oca
 #: model:ir.model.fields,help:edi_oca.field_edi_exchange_type_rule__enable_snippet
 msgid ""
 "Snippet of code to be checked on Models,\n"
 "        You can use `record` and `exchange_type` here.\n"
 "        It will be executed if variable result has been defined as True\n"
 "        "
-msgstr ""
-
-#. module: edi_oca
-#: model:ir.model.fields,help:edi_oca.field_edi_configuration__snippet_before_do
-msgid "Snippet to validate the state and collect records to do"
 msgstr ""
 
 #. module: edi_oca
@@ -1488,16 +1303,6 @@ msgid "The record state can be rolled back manually in case of failure."
 msgstr ""
 
 #. module: edi_oca
-#: model:ir.model.fields,field_description:edi_oca.field_edi_configuration__trigger_id
-msgid "Trigger"
-msgstr ""
-
-#. module: edi_oca
-#: model:ir.model.fields,help:edi_oca.field_edi_configuration__trigger_id
-msgid "Trigger that activates this configuration"
-msgstr ""
-
-#. module: edi_oca
 #: model:ir.model.fields,field_description:edi_oca.field_edi_exchange_type_rule__type_id
 #: model_terms:ir.ui.view,arch_db:edi_oca.edi_exchange_record_view_search
 msgid "Type"
@@ -1506,13 +1311,6 @@ msgstr ""
 #. module: edi_oca
 #: model:ir.model.fields,help:edi_oca.field_edi_exchange_type_rule__form_btn_label
 msgid "Type name used by default"
-msgstr ""
-
-#. module: edi_oca
-#: model:ir.model.fields,help:edi_oca.field_edi_configuration__snippet_do
-msgid ""
-"Used to do something specific here.\n"
-"        Receives: operation, edi_action, vals, old_vals."
 msgstr ""
 
 #. module: edi_oca

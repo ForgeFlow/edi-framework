@@ -141,7 +141,6 @@ class EDIRecordTestCase(EDIBackendCommonTestCase):
             {"name": "test_chan", "parent_id": parent_channel.id}
         )
         self.exchange_type_in.job_channel_id = channel
-        self.exchange_type_in.job_priority = 5
         # re-enable job delayed feature
         delayed = record.with_context(queue_job__no_delay=False).with_delay()
         # Silent useless warning
@@ -150,7 +149,6 @@ class EDIRecordTestCase(EDIBackendCommonTestCase):
         self.assertTrue(isinstance(delayed, DelayableRecordset))
         self.assertEqual(delayed.recordset, record)
         self.assertEqual(delayed.delayable.channel, "root.parent_test_chan.test_chan")
-        self.assertEqual(delayed.delayable.priority, 5)
 
     def test_create_child(self):
         vals = {
@@ -237,23 +235,3 @@ class EDIRecordTestCase(EDIBackendCommonTestCase):
         record0.exchange_file = filecontent
         self.assertEqual(record0.exchange_filechecksum, checksum2)
         self.assertNotEqual(record0.exchange_filechecksum, checksum1)
-
-    def test_related_records(self):
-        vals = {
-            "model": self.partner._name,
-            "res_id": self.partner.id,
-        }
-        record = self.backend.create_record("test_csv_output", vals)
-        self.assertEqual(record.record, self.partner)
-        self.assertTrue(record.related_record_ids)
-        self.assertEqual(record.related_record_ids.record, self.partner)
-        # We will link exchange record to another model record
-        spain = self.env.ref("base.es")
-        # Link consumer model to exchange record
-        record._set_related_record(spain)
-        # Main record is still the same as before
-        self.assertEqual(record.record, self.partner)
-        # Check related records
-        self.assertEqual(len(record.related_record_ids), 2)
-        self.assertEqual(record.related_record_ids[0].record, self.partner)
-        self.assertEqual(record.related_record_ids[1].record, spain)

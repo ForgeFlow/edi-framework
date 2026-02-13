@@ -83,13 +83,6 @@ msgid "Exchange Record Count"
 msgstr ""
 
 #. module: edi_product_oca
-#: model:ir.model.fields,field_description:edi_product_oca.field_product_packaging__exchange_related_record_ids
-#: model:ir.model.fields,field_description:edi_product_oca.field_product_product__exchange_related_record_ids
-#: model:ir.model.fields,field_description:edi_product_oca.field_product_template__exchange_related_record_ids
-msgid "Exchange Related Record"
-msgstr ""
-
-#. module: edi_product_oca
 #: model:ir.model,name:edi_product_oca.model_product_template
 msgid "Product"
 msgstr ""
@@ -102,6 +95,13 @@ msgstr ""
 #. module: edi_product_oca
 #: model:ir.model,name:edi_product_oca.model_product_product
 msgid "Product Variant"
+msgstr ""
+
+#. module: edi_product_oca
+#: model:ir.model.fields,help:edi_product_oca.field_product_packaging__origin_edi_endpoint_id
+#: model:ir.model.fields,help:edi_product_oca.field_product_product__origin_edi_endpoint_id
+#: model:ir.model.fields,help:edi_product_oca.field_product_template__origin_edi_endpoint_id
+msgid "Record generated via this endpoint"
 msgstr ""
 
 #. module: edi_product_oca

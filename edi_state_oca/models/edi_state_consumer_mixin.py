@@ -36,8 +36,8 @@ class EDIStateConsumerMixin(models.AbstractModel):
         state = state or self.edi_state_id
         if not state:
             return True
-        if exc_type is None and "origin_exchange_type_id" in self._fields:
-            exc_type = self.origin_exchange_type_id
+        # TODO: this implies we have `origin_exchange_type_id` from exchange.consumer.mixin
+        exc_type = exc_type or self.origin_exchange_type_id
         if not exc_type:
             _logger.warning("No exchange type given for %s#%s", self._name, self.id)
             return True

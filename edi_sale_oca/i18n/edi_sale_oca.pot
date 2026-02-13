@@ -119,12 +119,6 @@ msgid "Exchange Record Count"
 msgstr ""
 
 #. module: edi_sale_oca
-#: model:ir.model.fields,field_description:edi_sale_oca.field_sale_order__exchange_related_record_ids
-#: model:ir.model.fields,field_description:edi_sale_oca.field_sale_order_line__exchange_related_record_ids
-msgid "Exchange Related Record"
-msgstr ""
-
-#. module: edi_sale_oca
 #: model:ir.ui.menu,name:edi_sale_oca.menu_sale_edi_records
 msgid "Exchanges"
 msgstr ""
@@ -132,6 +126,12 @@ msgstr ""
 #. module: edi_sale_oca
 #: model:ir.model.fields,help:edi_sale_oca.field_sale_order_line__edi_id
 msgid "Internal or external identifier for records."
+msgstr ""
+
+#. module: edi_sale_oca
+#: model:ir.model.fields,help:edi_sale_oca.field_sale_order__origin_edi_endpoint_id
+#: model:ir.model.fields,help:edi_sale_oca.field_sale_order_line__origin_edi_endpoint_id
+msgid "Record generated via this endpoint"
 msgstr ""
 
 #. module: edi_sale_oca

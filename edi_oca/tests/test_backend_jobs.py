@@ -15,13 +15,7 @@ from .common import EDIBackendCommonTestCase
 class EDIBackendTestJobsCase(EDIBackendCommonTestCase, JobMixin):
     @classmethod
     def _setup_context(cls):
-        return dict(super()._setup_context(), queue_job__no_delay=None)
-
-    def _get_related_jobs(self, record):
-        # Use domain in action to find all related jobs
-        record.ensure_one()
-        action = record.action_view_related_queue_jobs()
-        return self.env["queue.job"].search(action["domain"])
+        return dict(super()._setup_context(), test_queue_job_no_delay=None)
 
     def test_output(self):
         job_counter = self.job_counter()
@@ -37,8 +31,6 @@ class EDIBackendTestJobsCase(EDIBackendCommonTestCase, JobMixin):
         self.assertEqual(
             created.name, "Generate output content for given exchange record."
         )
-        # Check related jobs
-        self.assertEqual(created, self._get_related_jobs(record))
         with mock.patch.object(
             type(self.backend), "_exchange_generate"
         ) as mocked_generate, mock.patch.object(
@@ -57,9 +49,6 @@ class EDIBackendTestJobsCase(EDIBackendCommonTestCase, JobMixin):
             self.assertEqual(res, "Exchange sent")
             self.assertEqual(record.edi_exchange_state, "output_sent")
         self.assertEqual(created[0].name, "Send exchange file.")
-        # Check related jobs
-        record.invalidate_recordset()
-        self.assertEqual(created, self._get_related_jobs(record))
 
     def test_output_fail_retry(self):
         job_counter = self.job_counter()
@@ -88,8 +77,6 @@ class EDIBackendTestJobsCase(EDIBackendCommonTestCase, JobMixin):
         created = job_counter.search_created()
         self.assertEqual(len(created), 1)
         self.assertEqual(created.name, "Retrieve an incoming document.")
-        # Check related jobs
-        self.assertEqual(created, self._get_related_jobs(record))
         with mock.patch.object(
             type(self.backend), "_exchange_receive"
         ) as mocked_receive, mock.patch.object(
@@ -129,6 +116,3 @@ class EDIBackendTestJobsCase(EDIBackendCommonTestCase, JobMixin):
         new_created = job_counter.search_created() - created
         # Should not create new job
         self.assertEqual(len(new_created), 0)
-        # Check related jobs
-        record.invalidate_recordset()
-        self.assertEqual(created, self._get_related_jobs(record))

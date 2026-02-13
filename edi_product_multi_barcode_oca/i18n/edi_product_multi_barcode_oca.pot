@@ -59,13 +59,13 @@ msgid "Exchange Record Count"
 msgstr ""
 
 #. module: edi_product_multi_barcode_oca
-#: model:ir.model.fields,field_description:edi_product_multi_barcode_oca.field_product_barcode__exchange_related_record_ids
-msgid "Exchange Related Record"
+#: model:ir.model,name:edi_product_multi_barcode_oca.model_product_barcode
+msgid "Individual item in a product's barcode list"
 msgstr ""
 
 #. module: edi_product_multi_barcode_oca
-#: model:ir.model,name:edi_product_multi_barcode_oca.model_product_barcode
-msgid "Individual item in a product's barcode list"
+#: model:ir.model.fields,help:edi_product_multi_barcode_oca.field_product_barcode__origin_edi_endpoint_id
+msgid "Record generated via this endpoint"
 msgstr ""
 
 #. module: edi_product_multi_barcode_oca

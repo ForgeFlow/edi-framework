@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-08-04 14:25+0000\n"
+"PO-Revision-Date: 2024-07-29 08:58+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10.4\n"
+"X-Generator: Weblate 5.6.2\n"
 
 #. module: edi_product_multi_barcode_oca
 #: model:ir.model.fields,field_description:edi_product_multi_barcode_oca.field_product_barcode__edi_disable_auto
@@ -62,19 +62,16 @@ msgid "Exchange Record Count"
 msgstr "Conteggio record di scambio"
 
 #. module: edi_product_multi_barcode_oca
-#: model:ir.model.fields,field_description:edi_product_multi_barcode_oca.field_product_barcode__exchange_related_record_ids
-msgid "Exchange Related Record"
-msgstr "Record relativo allo scambio"
-
-#. module: edi_product_multi_barcode_oca
 #: model:ir.model,name:edi_product_multi_barcode_oca.model_product_barcode
 msgid "Individual item in a product's barcode list"
 msgstr "Singolo oggetto nella lista codici a barre di un prodotto"
 
 #. module: edi_product_multi_barcode_oca
+#: model:ir.model.fields,help:edi_product_multi_barcode_oca.field_product_barcode__origin_edi_endpoint_id
+msgid "Record generated via this endpoint"
+msgstr "Record generato attraverso questo endpoint"
+
+#. module: edi_product_multi_barcode_oca
 #: model:ir.model.fields,help:edi_product_multi_barcode_oca.field_product_barcode__edi_disable_auto
 msgid "When marked, EDI automatic processing will be avoided"
 msgstr "Quando selezionata, l'elaborazione EDI automatica verrà evitata"
-
-#~ msgid "Record generated via this endpoint"
-#~ msgstr "Record generato attraverso questo endpoint"

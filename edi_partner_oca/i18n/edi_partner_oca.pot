@@ -69,8 +69,8 @@ msgid "Exchange Record Count"
 msgstr ""
 
 #. module: edi_partner_oca
-#: model:ir.model.fields,field_description:edi_partner_oca.field_res_partner__exchange_related_record_ids
-msgid "Exchange Related Record"
+#: model:ir.model.fields,help:edi_partner_oca.field_res_partner__origin_edi_endpoint_id
+msgid "Record generated via this endpoint"
 msgstr ""
 
 #. module: edi_partner_oca

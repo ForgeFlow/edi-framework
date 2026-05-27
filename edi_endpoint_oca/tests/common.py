@@ -1,6 +1,7 @@
 # Copyright 2026 Camptocamp SA
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
+from odoo.orm.model_classes import add_to_registry
 from odoo.tests.common import TransactionCase
 
 
@@ -13,6 +14,21 @@ class EDIEndpointTestMixin:
     def _setup_env(cls, ctx=None):
         ctx = ctx or {}
         cls.env = cls.env(context=cls._setup_context(**ctx))
+        # Register EdiTestExecution so _get_exchange_type can satisfy the
+        # _check_direction_handlers constraint (input types need process_model_id).
+        if "edi.framework.test.execution" not in cls.registry:
+            from odoo.addons.edi_core_oca.tests.fake_models import EdiTestExecution
+
+            add_to_registry(cls.registry, EdiTestExecution)
+            cls.registry._setup_models__(cls.env.cr, ["edi.framework.test.execution"])
+            cls.registry.init_models(
+                cls.env.cr, ["edi.framework.test.execution"], {"models_to_check": True}
+            )
+            cls.addClassCleanup(
+                lambda: cls.registry.__delitem__("edi.framework.test.execution")
+                if "edi.framework.test.execution" in cls.registry
+                else None
+            )
 
     @classmethod
     def _setup_records(cls):
@@ -86,12 +102,14 @@ class EDIEndpointTestMixin:
 
     @classmethod
     def _get_exchange_type(cls):
+        handler_model = cls.env["ir.model"]._get("edi.framework.test.execution")
         return cls.env["edi.exchange.type"].create(
             {
                 "name": "EDI exchange demo",
                 "code": "demo_endpoint",
                 "backend_type_id": cls.backend_type.id,
                 "direction": "input",
+                "process_model_id": handler_model.id,
             }
         )
 

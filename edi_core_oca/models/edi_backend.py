@@ -144,8 +144,7 @@ class EDIBackend(models.Model):
         if output:
             message = exchange_record._exchange_status_message("generate_ok")
             try:
-                with self.env.cr.savepoint():
-                    self._validate_data(exchange_record, output)
+                self._validate_data(exchange_record, output)
             except EDIValidationError as err:
                 traceback = _get_exception_traceback()
                 error = _get_exception_msg(err)
@@ -243,9 +242,8 @@ class EDIBackend(models.Model):
         message = None
         res = ""
         try:
-            with self.env.cr.savepoint():
-                self._exchange_send(exchange_record)
-                _logger.debug("%s sent", exchange_record.identifier)
+            self._exchange_send(exchange_record)
+            _logger.debug("%s sent", exchange_record.identifier)
         except self._send_retryable_exceptions() as err:
             traceback = _get_exception_traceback()
             error = _get_exception_msg(err)
@@ -474,8 +472,7 @@ class EDIBackend(models.Model):
         message = None
         res = None
         try:
-            with self.env.cr.savepoint():
-                res = self._exchange_process(exchange_record)
+            res = self._exchange_process(exchange_record)
         except self._swallable_exceptions() as err:
             if self.env.context.get("_edi_process_break_on_error"):
                 raise
@@ -532,12 +529,11 @@ class EDIBackend(models.Model):
         message = None
         res = None
         try:
-            with self.env.cr.savepoint():
-                content = self._exchange_receive(exchange_record)
-                # Ignore result of FileNotFoundError/OSError
-                if content is not None:
-                    exchange_record._set_file_content(content)
-                    self._validate_data(exchange_record)
+            content = self._exchange_receive(exchange_record)
+            # Ignore result of FileNotFoundError/OSError
+            if content is not None:
+                exchange_record._set_file_content(content)
+                self._validate_data(exchange_record)
         except EDIValidationError as err:
             traceback = _get_exception_traceback()
             error = _get_exception_msg(err)
